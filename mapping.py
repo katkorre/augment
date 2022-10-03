@@ -14,12 +14,7 @@ from datasets import load_dataset, concatenate_datasets, load_from_disk, load_me
 from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer, TrainerCallback, AutoModelForCausalLM, AutoModelForSeq2SeqLM
 from sklearn.model_selection import train_test_split
 
-# read zipfile
-zf = zipfile.ZipFile('/content/starting_ki.zip') 
-# check contained files
-zf.namelist()
-
-df = pd.read_csv(zf.open('train_all_tasks.csv'))
+df = pd.read_csv('EDOS.csv')
 
 df['label_sexist'] = df['label_sexist'].replace('sexist', 1)
 df['label_sexist'] = df['label_sexist'].replace('not sexist', 0)
